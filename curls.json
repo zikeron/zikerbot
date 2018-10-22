@@ -1,0 +1,74 @@
+// Añade Botón de Bienvenida
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "get_started": {"payload":
+        "GET_STARTED_ZIKERBOT"
+    }
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAcitmt0owYBAOF8Di8WSqKGmI9XkrF2XkaPgRz5QoTCyuSzZAo3Bo0QQZCcs0HvAO808RGzluENIzI3ATLSm4XKow6K6HWUAg80XpZCfyNAO24dNYyM312z6fHkp0XiTpVvzw4WAp4ZCZAsR3d8xVvYykUVUZBmaGtC3KiWal6QZDZD"
+
+// Añade mensaje de bienvenida
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "greeting": [
+        {
+            "locale": "default",
+            "text": "Hola {{user_first_name}}, soy tu Ziker de bolsillo"
+        }, {
+            "locale": "en_US",
+            "text": "Hi {{user_first_name}}, Im your pocket Ziker"
+        }
+    ]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAcitmt0owYBAOF8Di8WSqKGmI9XkrF2XkaPgRz5QoTCyuSzZAo3Bo0QQZCcs0HvAO808RGzluENIzI3ATLSm4XKow6K6HWUAg80XpZCfyNAO24dNYyM312z6fHkp0XiTpVvzw4WAp4ZCZAsR3d8xVvYykUVUZBmaGtC3KiWal6QZDZD"
+
+// menu persistente
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "persistent_menu": [
+        {
+            "locale": "default",
+            "composer_input_disabled": false,
+            "call_to_actions": [
+                {
+                    "title": "Ziker Menu",
+                    "type": "nested",
+                    "call_to_actions": [
+                        {
+                            "title": "Imagenes para Ary",
+                            "type": "postback",
+                            "payload": "CARDS_PAYLOAD"
+                        }
+                    ]
+                },
+                {
+                    "title": "Menu de Frases de Ziker",
+                    "type": "nested",
+                    "call_to_actions":[
+                        {
+                            "title": "Para Ary",
+                            "type": "nested",
+                            "call_to_actions": [
+                                {
+                                    "title": "Chistes 😂",
+                                    "type": "postback",
+                                    "payload": "ARYS_JOKES"
+                                },
+                                {
+                                    "title": "Mensajes 😙",
+                                    "type": "postback",
+                                    "payload": "ARYS_MESSAGES"
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    "type": "web_url",
+                    "title": "Pagina Web",
+                    "url": "https://www.facebook.com/zikeron",
+                    "webview_height_ratio": "full"
+                }
+            ]
+        }
+    ]
+}
+' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAcitmt0owYBAOF8Di8WSqKGmI9XkrF2XkaPgRz5QoTCyuSzZAo3Bo0QQZCcs0HvAO808RGzluENIzI3ATLSm4XKow6K6HWUAg80XpZCfyNAO24dNYyM312z6fHkp0XiTpVvzw4WAp4ZCZAsR3d8xVvYykUVUZBmaGtC3KiWal6QZDZD"
