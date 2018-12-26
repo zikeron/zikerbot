@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "messenger bot ",
   "main": "app.js",
+  "engines": {
+    "node": "8.12.0"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
